@@ -26,5 +26,10 @@ public Optional<Product> Singleproduct(ObjectId id){
 
 }
 
+public Product addProduct (Product product){
+
+    return Productrepository.save(product);
+}
+
 
 }

@@ -1,5 +1,9 @@
 package com.Assignement.Abc_backend.Controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,8 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.Assignement.Abc_backend.Model.Product;
 import com.Assignement.Abc_backend.Service.ProductService;
@@ -19,29 +26,44 @@ import com.Assignement.Abc_backend.Service.ProductService;
 @RequestMapping("/products")
 public class productController {
 
-@Autowired
-ProductService productservice;
+    @Autowired
+    ProductService productService;
 
-@GetMapping
-public ResponseEntity<List<Product>> getAllProducts(){
+    private static final String DIRECTORY = "C:\\Users\\Acer\\Abc-Restaurant\\backend\\Abc-backend\\Abc-backend\\src\\main\\resources\\static\\Images\\";
 
-    return new ResponseEntity<>(productservice.allProduct(),HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<List<Product>> getAllProducts() {
+        return new ResponseEntity<>(productService.allProduct(), HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Product>>getSIngleproduct(@PathVariable ObjectId id){
     
-}
+        return new ResponseEntity<>(productService.Singleproduct(id),HttpStatus.OK);
+    
+    }
 
-@GetMapping("/{id}")
-public ResponseEntity<Optional<Product>>getSIngleproduct(@PathVariable ObjectId id){
+    @PostMapping
+    public ResponseEntity<Product> addProduct(
+            @RequestParam("Productname") String productName,
+            @RequestParam("Description") String description,
+            @RequestParam("image") MultipartFile file) {
 
-    return new ResponseEntity<>(productservice.Singleproduct(id),HttpStatus.OK);
+        String fileName = file.getOriginalFilename();
+        Path path = Paths.get(DIRECTORY + fileName);
 
-}
+        try {
+            Files.write(path, file.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
 
-// @PostMapping
-// public ResponseEntity<Product> addProduct(@Requestbody Product product){
+        String imageUrl = "http://localhost:8080/images/" + fileName;
+        Product product = new Product();
+        product.setProductname(productName);
+        product.setDescription(description);
+        product.setImageurl(imageUrl);
 
-//     return new ResponseEntity<>(productservice.saveProduct(product), HttpStatus.CREATED);
-// }
-
-
-
+        return new ResponseEntity<>(productService.addProduct(product), HttpStatus.CREATED);
+    }
 }
