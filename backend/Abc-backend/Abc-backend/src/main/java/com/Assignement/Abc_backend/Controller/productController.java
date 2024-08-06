@@ -1,7 +1,6 @@
 package com.Assignement.Abc_backend.Controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -46,13 +45,23 @@ public class productController {
     public ResponseEntity<Product> addProduct(
             @RequestParam("Productname") String productName,
             @RequestParam("Description") String description,
+            @RequestParam("Price") int price,
+            @RequestParam("Quantity") int quantity,
             @RequestParam("image") MultipartFile file) {
+
+                if (productName == null || productName.isEmpty()
+                || description == null || description.isEmpty()
+                || price <= 0 || file == null || file.isEmpty()
+                || quantity<=0|| file==null ||file.isEmpty()) {
+                return ResponseEntity.badRequest().body(null);
+            }
+        
 
         String fileName = file.getOriginalFilename();
         Path path = Paths.get(DIRECTORY + fileName);
 
         try {
-            Files.write(path, file.getBytes());
+            file.transferTo(path);
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -62,7 +71,11 @@ public class productController {
         Product product = new Product();
         product.setProductname(productName);
         product.setDescription(description);
+        product.setPrice(price);
+        product.setQuantity(quantity);
         product.setImageurl(imageUrl);
+        product.setId(ObjectId.get());
+       
 
         return new ResponseEntity<>(productService.addProduct(product), HttpStatus.CREATED);
     }

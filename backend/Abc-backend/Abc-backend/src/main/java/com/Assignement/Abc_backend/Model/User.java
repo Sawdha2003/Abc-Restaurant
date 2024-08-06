@@ -2,25 +2,31 @@ package com.Assignement.Abc_backend.Model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import  org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection="products")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 
-public class Product {
+@Document(collection = "Users") 
+
+public class User {
 
     @Id
     private ObjectId id;
-    private String Productname;
-    private String Description;
-    private int Price;
-    private int Quantity;
-    private String imageurl;
+
+    private String Username;
+
+    private String Password;
+
+    private String Email;
+
+    private String role;
 
 }
