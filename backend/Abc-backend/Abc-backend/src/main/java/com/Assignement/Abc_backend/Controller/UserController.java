@@ -1,5 +1,7 @@
 package com.Assignement.Abc_backend.Controller;
 
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,12 +36,19 @@ public class UserController {
 
         
             String role=user.getRole();
-            
-        if(role==null ||(!role.equals("Admin")&&(!role.equals("Customer")))){
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid role provided");
+            if(role==null || role.isEmpty()){
+                user.setRole("Customer");
+            } else if(role.equals("Admin")){
 
-        }
+                boolean adminExists = userepository.findByRole("Admin").isPresent();
+                if (adminExists) {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Admin already exists.");
+                }
+            } else if (!role.equals("Admin") && !role.equals("Customer")) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid role provided");
+            }
+        
 
         
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -56,9 +65,5 @@ public class UserController {
 
             
     }
-
-
-
-    
-
 }
+
