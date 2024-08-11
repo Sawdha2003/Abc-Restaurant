@@ -1,7 +1,5 @@
 package com.Assignement.Abc_backend.Controller;
 
-import java.util.Optional;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Assignement.Abc_backend.Model.User;
 import com.Assignement.Abc_backend.Repository.UserRepository;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -65,5 +65,13 @@ public class UserController {
 
             
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User loginRequest, HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        
+        return ResponseEntity.ok("Login successful");
+    }
+
 }
 

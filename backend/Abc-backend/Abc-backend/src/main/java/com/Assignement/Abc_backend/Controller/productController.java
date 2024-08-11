@@ -47,12 +47,14 @@ public class productController {
             @RequestParam("Description") String description,
             @RequestParam("Price") int price,
             @RequestParam("Quantity") int quantity,
+            @RequestParam("Category") String category,
             @RequestParam("image") MultipartFile file) {
 
                 if (productName == null || productName.isEmpty()
                 || description == null || description.isEmpty()
                 || price <= 0 || file == null || file.isEmpty()
-                || quantity<=0|| file==null ||file.isEmpty()) {
+                || quantity<=0|| file==null ||file.isEmpty()
+                || category ==null || category.isEmpty()) {
                 return ResponseEntity.badRequest().body(null);
             }
         
@@ -73,6 +75,7 @@ public class productController {
         product.setDescription(description);
         product.setPrice(price);
         product.setQuantity(quantity);
+        product.setCategory(category);
         product.setImageurl(imageUrl);
         product.setId(ObjectId.get());
        
