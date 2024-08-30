@@ -31,5 +31,18 @@ public Product addProduct (Product product){
     return Productrepository.save(product);
 }
 
+public boolean deleteproduct(ObjectId id){
 
+    if(Productrepository.existsById(id)){
+
+        Productrepository.deleteById(id);
+
+        return true;
+
+    }
+    else return false;
+
+} 
 }
+
+

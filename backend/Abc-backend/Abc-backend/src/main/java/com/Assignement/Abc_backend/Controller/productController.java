@@ -10,6 +10,8 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.Assignement.Abc_backend.Model.Product;
 import com.Assignement.Abc_backend.Service.ProductService;
 
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/products")
 public class productController {
@@ -81,5 +84,22 @@ public class productController {
        
 
         return new ResponseEntity<>(productService.addProduct(product), HttpStatus.CREATED);
+
+        
     }
+    @DeleteMapping("/{id}")
+public ResponseEntity<Product> deleteProduct(@PathVariable ObjectId id) {
+    productService.deleteproduct(id);
+    return new ResponseEntity<>(HttpStatus.OK);
+}
+
+    public boolean isValidDetails(String productName, String description, int price, int quantity, String category) {
+        if (productName == null || productName.isEmpty()
+                || description == null || description.isEmpty()
+                || price <= 0 || quantity <= 0 || category == null || category.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+    
 }
