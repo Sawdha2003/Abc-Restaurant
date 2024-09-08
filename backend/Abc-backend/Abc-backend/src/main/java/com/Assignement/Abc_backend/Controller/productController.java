@@ -1,11 +1,12 @@
 package com.Assignement.Abc_backend.Controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.http.MediaType;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -87,6 +88,29 @@ public class productController {
 
         
     }
+    @GetMapping("/{id}/image")
+    public ResponseEntity<byte[]> getImage(@PathVariable("id") ObjectId id) {
+        Product product = productService.getProductById(id);
+        if (product == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        String fileName = product.getImageurl().substring(product.getImageurl().lastIndexOf('/') + 1);
+        Path filePath = Paths.get(DIRECTORY, fileName);
+
+        try {
+            byte[] imageBytes = Files.readAllBytes(filePath);
+            String mimeType = Files.probeContentType(filePath);
+            return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(mimeType))
+                .body(imageBytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
     @DeleteMapping("/{id}")
 public ResponseEntity<Product> deleteProduct(@PathVariable ObjectId id) {
     productService.deleteproduct(id);
@@ -102,4 +126,12 @@ public ResponseEntity<Product> deleteProduct(@PathVariable ObjectId id) {
         return true;
     }
     
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String category){
+
+        List<Product> products=productService.getProductById(category);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+
+
+    }
 }

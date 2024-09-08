@@ -31,6 +31,7 @@ public class DineinController {
       return new ResponseEntity<>(savedDinein, HttpStatus.CREATED);
 
     }
+    
     @GetMapping("/pending")
     public ResponseEntity<List<Dinein>> getAllPendingDinein() {
         List<Dinein> pendingDineins = dineinservice.getAllthependings();

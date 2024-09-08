@@ -39,4 +39,8 @@ public void setStatus(String string) {
     throw new UnsupportedOperationException("Unimplemented method 'setStatus'");
 }
 
+    public String getId() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

@@ -42,7 +42,25 @@ public boolean deleteproduct(ObjectId id){
     }
     else return false;
 
+}
+
+public Product getProductById(ObjectId id) {
+    
+    Optional<Product> product = Singleproduct(id);
+       
+        return product.orElse(null);
 } 
+
+public List<Product> getProductById (String category){
+
+    if (category.equalsIgnoreCase("all")) {
+        return Productrepository.findAll(); 
+    } else {
+        
+        return Productrepository.findByCategory(category); 
+
+    }
+}
 }
 
 

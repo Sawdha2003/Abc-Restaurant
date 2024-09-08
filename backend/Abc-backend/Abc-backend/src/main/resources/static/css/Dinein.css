@@ -1,0 +1,111 @@
+body {
+  padding: 0;
+  margin: 0;
+  color: aliceblue;
+  padding-top: 80px;
+}
+
+header {
+  background-color: rgba(54, 53, 52, 0.8);
+  color: #FFD700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin-left: 2rem;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #ffc107;
+}
+
+.navbar ul li select {
+  background-color: #ffc107;
+  color: #646262;
+  padding: 10px;
+  margin-right: 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+}
+
+.container {
+  padding: 75px;
+  margin: 80px auto;
+  border-radius: 10px;
+  color: #646262;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: rgb(211, 211, 137);
+  max-width: 800px;
+}
+
+.container .dine-in form {
+  padding: 40px;
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #d4d4a4;
+  margin: 0 auto;
+
+}
+
+.container .dine-in form h2 {
+  width: 100%;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.container .dine-in form .input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #b37a7a;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: calc(50% - 20px);
+  font-size: 1rem;
+}
+
+.container .dine-in form button[type="submit"] {
+  padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffc107;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}

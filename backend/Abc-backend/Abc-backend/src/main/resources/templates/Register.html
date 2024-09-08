@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="/css/Register.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <i class='bx bx-restaurant'></i>
+        <h1>ABC Restaurant</h1>
+    </div>
+</header>
+
+<div class="form-Container">
+    <form id="formsubmit" method="POST" action="/register">
+
+        <h2>Register</h2>
+
+        <div id="notification" class="notification"></div>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter the Username" required>
+        <span style="color: red;" id="username-error"></span>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter the email" required>
+        <span style="color: red;" id="email-error"></span>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter the password" required>
+        <span style="color: red;" id="password-error"></span>
+
+        <label for="role">Select Role</label>
+        <select id="role" name="role">
+            <option value="Customer">Customer</option>
+            <option value="Admin">Admin</option>
+        </select>
+        <span style="color: red;" id="role-error"></span>
+
+        <p>Have an account? <a href="/login">Login</a></p>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script src="/js/Reg.js"></script>
+
+</body>
+</html>

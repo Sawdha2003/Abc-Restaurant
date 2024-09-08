@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.Slide {
+    height: 100%;
+    width: 200px;
+    position: absolute;
+    background-color: #fff;
+    transition: 0.5s ease;
+    transform: translateX(-180px); /* Sidebar is hidden initially */
+    
+}
+
+h1 {
+    color: #FFD700;
+    font-weight: 800;
+    text-align: center;
+    padding: 10px 0;
+    padding-right: 30px;
+    pointer-events: none;
+    font-family: "Crete Round";
+}
+
+ul li {
+    list-style: none;
+    margin-left: 5px;
+    margin-top: 25px;
+}
+
+ul li a {
+    color: #453e19;
+    font-weight: 500;
+    padding: 5px 0;
+    display: block;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: 0.2s ease-out;
+
+}
+
+ul li:hover a {
+    color: #fff;
+    background-color: #FFD700;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.toggle {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    cursor: pointer;
+    top: 20px; /* Position it at the top */
+    left: 15px; /* Position it to the left */
+    z-index: 2; /* Ensure it is above other elements */
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.toggle.common {
+    position: absolute;
+    height: 2px;
+    width: 20px;
+    background-color: #FFD700;
+    border-radius: 50px;
+    transition: 0.3s ease;
+}
+
+.toggle .top_line {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.toggle .middle_line {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.toggle .bottom_line {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input:checked ~ .toggle .top_line {
+    left: 2px;
+    top: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+}
+
+input:checked ~ .toggle .bottom_line {
+    left: 2px;
+    top: 14px;
+    width: 25px;
+    transform: rotate(-45deg);
+}
+
+input:checked ~ .toggle .middle_line {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+input:checked ~ .Slide {
+    transform: translateX(0); /* Sidebar slides in when checked */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
