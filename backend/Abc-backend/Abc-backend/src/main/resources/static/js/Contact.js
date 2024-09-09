@@ -57,4 +57,29 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
     alert("Message sent successfully!");
+
+
+    fetch('/query',{
+
+        method:'POST',
+
+        headers:{
+            'Content-Type': 'application/json',
+        },
+
+    })
+
+    .then(response => {
+        if (response.ok) {
+            alert("Message sent successfully!");
+           
+        } else {
+            alert("There was a problem submitting the form. Please try again.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+    });
 });
+

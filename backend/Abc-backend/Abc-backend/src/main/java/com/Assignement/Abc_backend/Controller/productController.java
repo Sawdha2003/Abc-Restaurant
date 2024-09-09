@@ -1,4 +1,4 @@
-package com.Assignement.Abc_backend.Controller;
+package com.Assignment.Abc_Restaurant.Controller;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,27 +6,29 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.http.MediaType;
+
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.Assignement.Abc_backend.Model.Product;
-import com.Assignement.Abc_backend.Service.ProductService;
+import com.Assignment.Abc_Restaurant.Model.Product;
+import com.Assignment.Abc_Restaurant.Service.ProductService;
 
-@CrossOrigin(origins = "http://127.0.0.1:5500")
-@RestController
-@RequestMapping("/products")
+
+
+@Controller
+@RequestMapping
 public class productController {
 
     @Autowired
@@ -34,7 +36,7 @@ public class productController {
 
     private static final String DIRECTORY = "C:\\Users\\Acer\\Abc-Restaurant\\backend\\Abc-backend\\Abc-backend\\src\\main\\resources\\static\\Images\\";
 
-    @GetMapping
+    @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts() {
         return new ResponseEntity<>(productService.allProduct(), HttpStatus.OK);
     }
@@ -133,5 +135,15 @@ public ResponseEntity<Product> deleteProduct(@PathVariable ObjectId id) {
         return new ResponseEntity<>(products, HttpStatus.OK);
 
 
+    }
+    
+
+    @GetMapping("/manage-product")
+    public String getProductpage(Model model){
+
+         model.addAttribute("product", new Product());
+
+
+        return "Product";
     }
 }

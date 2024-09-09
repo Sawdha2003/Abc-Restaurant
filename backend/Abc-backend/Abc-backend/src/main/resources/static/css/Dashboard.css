@@ -26,6 +26,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 10;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -221,22 +222,32 @@ footer {
   color: #ffc107;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .about-us {
-      flex-direction: column;
-  }
 
-  .about-img img {
-      width: 80%;
-      margin-bottom: 2rem;
-  }
 
-  .about-text {
-      width: 100%;
-  }
 
-  .facility {
-      max-width: 100%;
-  }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #4CAF50; 
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #45a049; 
 }

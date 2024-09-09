@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td class="Action">
                         <button onclick="editProduct('${product.id}')">Edit</button>
                         <button onclick="deleteProduct('${product.id}')">Delete</button>
+                        <button onclick="window.location.href='/add-product'">Add Product</button>
                     </td>
                 </tr>`;
             });
@@ -31,7 +32,7 @@ function deleteProduct(id) {
         return;
     }
 
-    fetch(`http://localhost:8080/products/${id}`, { // Correct endpoint
+    fetch(`http://localhost:8080/products/${id}`, { 
         method: 'DELETE'
     })
     .then(response => {

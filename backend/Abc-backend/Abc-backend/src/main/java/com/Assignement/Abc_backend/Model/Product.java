@@ -1,4 +1,4 @@
-package com.Assignement.Abc_backend.Model;
+package com.Assignment.Abc_Restaurant.Model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -23,5 +23,9 @@ public class Product {
     private int Quantity;
     private String Category;
     private String imageurl;
+    public static Object deleteproduct(ObjectId id2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteproduct'");
+    }
 
 }

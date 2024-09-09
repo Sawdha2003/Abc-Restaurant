@@ -3,50 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Manage User</title>
 </head>
 <body>
 <style>
+   
+    header {
+        background-color: #f2a07b; 
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+        color: white;
+        margin-left: 10px;
+    }
+
+    .logo i {
+        font-size: 32px;
+        color: white;
+    }
+
+    .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .navbar ul li {
+        margin-right: 20px;
+    }
+
+    .navbar ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        padding: 10px 15px;
+        transition: background-color 0.3s;
+        border-radius: 5px;
+    }
+
+    .navbar ul li a:hover {
+        background-color: white;
+        color: #f2a07b;
+    }
+
+    /* Active link styles */
+    .navbar ul li a.home-active {
+        background-color: white;
+        color: #f2a07b;
+        border-radius: 5px;
+    }
+
     body {
         font-family: Arial, sans-serif;
         margin: 20px;
         background-color: #f9f9f9;
     }
+
     h1 {
         color: #333;
     }
+
     table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
+
     table, th, td {
         border: 1px solid #ddd;
     }
+
     th, td {
         padding: 12px;
         text-align: left;
     }
+
     th {
         background-color: #f2a07b;
         color: white;
     }
-
 </style>
-        <h1>Manage Users</h1>
-        <table id="users-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-                <script src="/js/Manageuser.js"></script>
+
+<header>
+    <div class="logo">
+        <i class='bx bx-restaurant' aria-label="Restaurant logo"></i>
+        <h1>ABC Restaurant</h1>
+    </div>
+    <div class="navbar">
+        <ul>
+            <li><a href="AdminDashboard.html" class="home-active">Home</a></li>
+            <li><a href="">Manage Order</a></li>
+            <li><a href="Product.html">Manage Products</a></li>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="">Manage Reservation</a></li>
+            <li><a href="">Manage Queries</a></li>
+            <li><a href="">Logout</a></li>
+        </ul>
+    </div>
+</header>
+
+<h1>Manage Users</h1>
+
+<table id="users-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
+
+
+<script src="/js/Manageuser.js"></script>
+
 </body>
 </html>

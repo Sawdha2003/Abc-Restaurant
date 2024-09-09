@@ -1,4 +1,4 @@
-package com.Assignement.Abc_backend.Controller;
+package com.Assignment.Abc_Restaurant.Controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Assignement.Abc_backend.Dinein;
-import com.Assignement.Abc_backend.Service.DineinService;
+import com.Assignment.Abc_Restaurant.Dinein;
+import com.Assignment.Abc_Restaurant.Service.DineinService;
 
 @RestController
 @RequestMapping("/Dinein")
@@ -31,7 +31,6 @@ public class DineinController {
       return new ResponseEntity<>(savedDinein, HttpStatus.CREATED);
 
     }
-    
     @GetMapping("/pending")
     public ResponseEntity<List<Dinein>> getAllPendingDinein() {
         List<Dinein> pendingDineins = dineinservice.getAllthependings();
