@@ -1,4 +1,4 @@
-package com.Assignement.Abc_backend.config;
+package com.Assignment.Abc_Restaurant.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

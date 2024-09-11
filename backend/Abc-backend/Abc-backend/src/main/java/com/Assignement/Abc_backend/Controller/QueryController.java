@@ -7,9 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.Assignment.Abc_Restaurant.Model.Contact;
 import com.Assignment.Abc_Restaurant.Repository.QueryRepository;
+import com.Assignment.Abc_Restaurant.Service.QueryService;
 
 import lombok.AllArgsConstructor;
 
@@ -18,6 +20,7 @@ import lombok.AllArgsConstructor;
 public class QueryController {
 
     private final QueryRepository queryRepository;  
+    private final QueryService queryService;
 
     @GetMapping("/contact")
     public String showContactForm(Model model) {
@@ -26,7 +29,7 @@ public class QueryController {
     }
 
     @PostMapping("/query")
-    public String submitQuery(@ModelAttribute Contact contact) {
+    public String submitQuery(@RequestBody Contact contact) {
        
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String loggedInUserName = authentication.getName();
@@ -34,10 +37,9 @@ public class QueryController {
       
         contact.setName(loggedInUserName);
 
-        
-        queryRepository.save(contact);
+        queryService.saveQuery(contact);
 
        
-        return "redirect:/success";  
+        return "redirect:/Dashboard";  
     }
 }

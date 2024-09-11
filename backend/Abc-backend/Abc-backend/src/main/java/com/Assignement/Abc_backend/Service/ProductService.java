@@ -1,4 +1,4 @@
-package com.Assignement.Abc_backend.Service;
+package com.Assignment.Abc_Restaurant.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Assignement.Abc_backend.Model.Product;
-import com.Assignement.Abc_backend.Repository.productRepository;
+import com.Assignment.Abc_Restaurant.Model.Product;
+import com.Assignment.Abc_Restaurant.Repository.productRepository;
 @Service
 public class ProductService {
 

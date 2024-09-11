@@ -1,4 +1,4 @@
-package com.Assignement.Abc_backend;
+package com.Assignment.Abc_Restaurant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -12,9 +12,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.Assignement.Abc_backend.Controller.productController;
-import com.Assignement.Abc_backend.Model.Product;
-import com.Assignement.Abc_backend.Service.ProductService;
+
+import com.Assignment.Abc_Restaurant.Controller.productController;
+import com.Assignment.Abc_Restaurant.Service.ProductService;
 
 public class DeleteProductTest {
 
@@ -33,7 +33,7 @@ public class DeleteProductTest {
     @Test
     public void testDeleteProduct() {
         ObjectId id = new ObjectId();
-        when(productService.deleteproduct(id)).thenReturn(false); // Mocking the service to return false
+        when(com.Assignment.Abc_Restaurant.Model.Product.deleteproduct(id)).thenReturn(false); // Mocking the service to return false
     
     }
 }

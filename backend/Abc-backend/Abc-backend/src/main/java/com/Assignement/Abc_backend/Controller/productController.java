@@ -34,7 +34,7 @@ public class productController {
     @Autowired
     ProductService productService;
 
-    private static final String DIRECTORY = "C:\\Users\\Acer\\Abc-Restaurant\\backend\\Abc-backend\\Abc-backend\\src\\main\\resources\\static\\Images\\";
+    private static final String DIRECTORY = "D:\\Abc_Restaurant\\src\\main\\resources\\static\\images";
 
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts() {
@@ -47,9 +47,9 @@ public class productController {
     
     }
 
-    @PostMapping
+    @PostMapping("/new-product")
     public ResponseEntity<Product> addProduct(
-            @RequestParam("Productname") String productName,
+            @RequestParam("productName") String productName,
             @RequestParam("Description") String description,
             @RequestParam("Price") int price,
             @RequestParam("Quantity") int quantity,
@@ -59,7 +59,7 @@ public class productController {
                 if (productName == null || productName.isEmpty()
                 || description == null || description.isEmpty()
                 || price <= 0 || file == null || file.isEmpty()
-                || quantity<=0|| file==null ||file.isEmpty()
+                || quantity<=0
                 || category ==null || category.isEmpty()) {
                 return ResponseEntity.badRequest().body(null);
             }
@@ -145,5 +145,13 @@ public ResponseEntity<Product> deleteProduct(@PathVariable ObjectId id) {
 
 
         return "Product";
+    }
+
+    @GetMapping("/add-product")
+    public String addproduct(Model model){
+
+        model.addAttribute("product", new Product());
+
+        return "Add Product";
     }
 }

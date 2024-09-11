@@ -1,4 +1,4 @@
-package com.Assignement.Abc_backend.Service;
+package com.Assignment.Abc_Restaurant.Service;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,13 +6,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.Assignement.Abc_backend.Model.User;
-import com.Assignement.Abc_backend.Repository.UserRepository;
+import com.Assignment.Abc_Restaurant.Model.User;
+import com.Assignment.Abc_Restaurant.Repository.UserRepository;
 
 @Service
 public class AuthenticationService implements UserDetailsService{
 
-        @Autowired
+    @Autowired
     private UserRepository userrepo;
 
      public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

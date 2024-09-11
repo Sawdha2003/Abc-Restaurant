@@ -1,12 +1,11 @@
-package com.Assignement.Abc_backend;
+package com.Assignment.Abc_Restaurant;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.Assignement.Abc_backend.Controller.productController;
+import com.Assignment.Abc_Restaurant.Controller.productController;
 
 public class AddProductTest {
 
