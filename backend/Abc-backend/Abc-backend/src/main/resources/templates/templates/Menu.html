@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Restaurant</title>
+    <link rel="stylesheet"  href="Menu.css">
+    
+    
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class='bx bx-restaurant'></i>
+            <h1>ABC Restaurant</h1>
+        </div>
+
+        <div class="navbar">
+            <ul>
+                <li><a href="#home" class="home-active">Home</a></li>
+                <li><a href="Menu.html">Menu</a></li>
+                <li><a href="#Facilities">Facilities</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li>
+                    <select id="reserve" name="reserve">
+                        <option value="">Reservation</option>
+                        <option value="Dinein.html">Dine-In</option>
+                        <option value="Delivery.html">Delivery</option>
+                    </select>
+                </li>
+                <li><a href="#Contact">Contact</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <select id="categoryFilter">
+        <option value="all">All</option>
+        <option value="Biriyani">Biriyani</option>
+        <option value="Pizza">Pizza</option>
+        <option value="Burger">Burger</option>
+        <!-- Add more categories as needed -->
+    </select>
+
+    <!-- Product Container -->
+    <div class="product-container" id="productContainer">
+        <!-- Product cards will be injected here by JavaScript -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryFilter = document.getElementById('categoryFilter');
+            const reserveDropdown = document.getElementById('reserve');
+
+            // Category filter event
+            categoryFilter.addEventListener('change', () => {
+                const selectedCategory = categoryFilter.value;
+                fetchProductsByCategory(selectedCategory);
+            });
+
+            // Initial fetch with 'all' categories
+            fetchProductsByCategory('all');
+
+            // Reservation dropdown change event
+            reserveDropdown.addEventListener('change', () => {
+                const selectedOption = reserveDropdown.value;
+                if (selectedOption) {
+                    window.location.href = selectedOption;
+                }
+            });
+        });
+
+        function fetchProductsByCategory(category) {
+            fetch(`http://localhost:8080/products/category/${category}`)
+                .then(response => response.json())
+                .then(data => {
+                    let productCards = '';
+                    data.forEach(product => {
+                        productCards += `
+                            <div class="product-card">
+                                <img src="${product.imageUrl}" alt="${product.productname}">
+                                <h3>${product.productname}</h3>
+                                <p>Description: ${product.description}</p>
+                                <p>Price: ${product.price}</p>
+                                <p>Category: ${product.category}</p>
+                                <button onclick="addToCart('${product.id}')">Add to cart</button>
+                            </div>
+                        `;
+                    });
+                    document.getElementById('productContainer').innerHTML = productCards;
+                })
+                .catch(error => {
+                    console.error("Error fetching and processing products:", error);
+                });
+        }
+
+        function addToCart(productId) {
+            // Logic for adding a product to the cart
+            console.log("Product added to cart:", productId);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="/css/Contact.css">
+
+</head>
+
+
+<body>
+
+    <header>
+        <div class="logo"><i class='bx bx-restaurant'></i><h1>ABC Restaurant</h1>
+
+        </div>
+
+        
+
+        <div class="navbar">
+
+        <ul>
+            <li><a href="/dashboard" class="home-active">Home</a></li>
+            <li><a href="Menu.html">Menu</a></li>
+            <li><a href="#Facilities">Facilities</a></li>
+            <li><a href="#about-us">Aboutus</a></li>
+            <li>
+                <select id="reserve" name="reserve">
+                    <option value="">Reservation</option>
+                    <option value="Dinein.html">Dine-In</option>
+                    <option value="Delivery.html">Delivery</option>
+                </select>
+            </li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="Gallery.html">Gallery</a></li>
+
+        </ul>
+
+        </div>
+
+        
+    </header>
+
+    
+    <section class="contact-us">
+        <div class="Title">
+            <h2>Get in Touch</h2>
+        </div>
+
+        <div class="box">
+          
+            <div class="contact form">
+                <h3>Send a Message</h3>
+                <form id="formsubmit" method="POST" action="/query">
+                    <div class="formbox">
+                        
+
+                        
+                        <div class="inputBox">
+                            <span>Email</span>
+                            <input type="email" placeholder="Enter your Email" id="email">
+                        </div>
+
+                        <div class="inputBox" id="message">
+                            <span>Message</span>
+                            <textarea placeholder="Write Your Message here..."></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="inputBox" id="submit">
+                                <input type="submit" value="Send">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+         
+            <div class="contact info">
+                <h3>Contact Information</h3>
+                <p>Address: 110, new city, Colombo 5</p>
+                <p>Phone:  055422154</p>
+                <p> Email: abcrestaurant@mail.com</p>
+
+                <h3>Other Branches</h3>
+                  <p>45, Old Town, Kandy</p>
+                  <p>78, Beach Road, Galle</p>
+                 <p>32, Lake Drive, Nuwara Eliya</p>
+
+            </div>
+
+            <div class="contact map">
+                <h3>Our Location</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.63215409969!2d79.77380260856127!3d6.92183156080099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253d10f7a7003%3A0x320b2e4d32d3838d!2sColombo!5e0!3m2!1sen!2slk!4v1725687839702!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-box">
+            <p> &#169 created by Sawdha Mufeedh</p>
+            <p>Come Again for Versatile taste</p>
+        </div>
+    </footer>
+
+    <script src="/js/Contact.js"></script>
+</body>
+</html>

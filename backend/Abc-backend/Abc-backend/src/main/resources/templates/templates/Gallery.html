@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Gallery</title>
+
+    <style>
+        header {
+            background-color: rgba(54, 53, 52, 0.8);
+            color: #FFD700;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: #FFD700;
+            margin-left: 10px;
+        }
+
+        .logo i {
+            font-size: 32px;
+            color: #FFD700;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #FFD700;
+            color: black;
+        }
+
+        /* Active link styles */
+        .navbar ul li a.home-active {
+            background-color: #FFD700;
+            color: black;
+            border-radius: 5px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #FFD700;
+            color: black;
+        }
+
+        .add-image-btn{
+
+          background-color: #FFD700;
+          color: #333;
+          border-radius: 5px;
+          font-size: 1rem;
+          text-align: center;
+          margin-top: 10px;
+          padding:20px;
+          cursor: pointer;
+        }
+
+        .add-image-btn:hover{
+
+        }
+
+        
+      footer{
+      background-color: #333; 
+      padding: 25px;
+      margin: 0;
+      text-align: center;
+      color: #e0a800; 
+      font-size: 1.1em; 
+      border-top: 2px solid #e0a800;
+     
+}
+footer.footer-box{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-utensils" aria-label="Restaurant logo"></i>
+            <h1>ABC Restaurant</h1>
+        </div>
+        <div class="navbar">
+            <ul>
+                <li><a href="AdminDashboard.html" class="home-active">Home</a></li>
+                <li><a href="">Manage Order</a></li>
+                <li><a href="Product.html">Manage Products</a></li>
+                <li><a href="">Manage Reservation</a></li>
+                <li><a href="">Manage Queries</a></li>
+                <li><a href="ManageUser.html">Manage Users</a></li>
+                <li><a href="/login">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <h1>Manage Gallery</h1>
+
+    <table id="gallery-details">
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+       
+        </tbody>
+     
+    </table>
+    <button class="add-image-btn" onclick="window.location.href='/view-add';">Add New Image</button>
+
+
+
+    
+    <footer>
+      <div class="footer-box">
+          <p> &#169 created by Sawdha Mufeedh</p>
+          <p>Come Again for Versatile taste</p>
+      </div>
+  </footer>
+
+    <script src="/js/manageGallery.js"></script>
+
+</body>
+</html>

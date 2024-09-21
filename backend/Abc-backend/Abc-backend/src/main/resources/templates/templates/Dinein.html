@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <link rel="stylesheet" href="/css/Dinein.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class='bx bx-restaurant'></i>
+            <h1>ABC Restaurant</h1>
+        </div>
+
+        <div class="navbar">
+            <ul>
+                <li><a href="#home" class="home-active">Home</a></li>
+                <li><a href="Menu.html">Menu</a></li>
+                <li><a href="#Facilities">Facilities</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li>
+                    <select id="reserve" name="reserve" onchange="redirectReservation()">
+                        <option value="">Reservation</option>
+                        <option value="/dine">Dine-In</option>
+                        <option value="Delivery.html">Delivery</option>
+                    </select>
+                    
+                </li>
+                <li><a href="#Contact">Contact</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <div class="container">
+        <form id="dine-in-form">
+            <h2>Dine-In</h2>
+            <input type="date" name="date" class="input">
+            <input type="time" name="time" class="input">
+            <input type="number" name="guests" placeholder="No. of Guests" class="input"><br>
+            <input type="text" name="name" placeholder="Name" class="input">
+            <input type="tel" name="phonenumber" placeholder="Phone Number" class="input">
+            <input type="email" name="email" placeholder="Enter your Email" class="input">
+            <select id="location" name="location" required>
+                <option value="">Select Location</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Galle">Galle</option>
+                <option value="Kandy">Kandy</option>
+            </select>
+            <button type="submit" id="submit">Book Table</button>
+        </form>
+    </div>
+    
+    <script src="/js/Dine-in.js"></script>
+</body>
+</html>

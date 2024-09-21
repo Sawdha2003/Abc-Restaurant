@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/customerproduct.css">
+</head>
+<body>
+    
+    <header>
+        <div class="logo"><i class='bx bx-restaurant'></i><h1>ABC Restaurant</h1></div>
+
+        <div class="navbar">
+            <ul>
+                <li><a href="/dashboard" class="home-active">Home</a></li>
+                <li><a href="Menu.html">Menu</a></li>
+                <li><a href="#Facilities">Facilities</a></li>
+                <li><a href="#about-us">Aboutus</a></li>
+                <li>
+                    <select id="reserve" name="reserve">
+                        <option value="">Reservation</option>
+                        <option value="Dinein.html">Dine-In</option>
+                        <option value="Delivery.html">Delivery</option>
+                    </select>
+                </li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
+                <li><a href="/login">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+<!-- 
+    Category Selection -->
+    <!-- <select id="category-select">
+        <option value="all">All Categories</option>
+        <option value="Biriyani">Biriyani</option>
+        <option value="Milkshake">Milkshake</option>
+        <option value="Shawarma">Shawarma</option>
+        
+    </select> -->
+
+    <!-- Container to display products -->
+    <div id="product-container" class="product-container"></div>
+
+    
+
+<script>
+   let allProducts = [];
+
+// Fetch products
+fetch("/products")
+.then(response => response.json())
+.then(data => {
+    allProducts = data;  // Store all fetched products
+    displayProductsByCategory(allProducts);  // Display products grouped by categories
+})
+.catch(error => {
+    console.error('Error fetching products:', error);
+});
+
+// Function to group products by category and display them
+function displayProductsByCategory(products) {
+    const productContainer = document.getElementById('product-container');
+    productContainer.innerHTML = '';  // Clear previous content
+
+    if (products.length === 0) {
+        productContainer.innerHTML = '<p>No products found.</p>';
+        return;
+    }
+
+    // Group products by category
+    const categorizedProducts = {};
+    products.forEach(product => {
+        if (!categorizedProducts[product.category]) {
+            categorizedProducts[product.category] = [];
+        }
+        categorizedProducts[product.category].push(product);
+    });
+
+    // Iterate through categories and display products
+    for (const [category, products] of Object.entries(categorizedProducts)) {
+        const categoryTitle = `<h2>${category}</h2>`;
+        productContainer.innerHTML += categoryTitle;
+
+        products.forEach(product => {
+            const productCard = `
+                <div class="product-card">
+                    <img src="/Productfolder/${product.imageurl}" alt="${product.productname}">
+                    <h3>${product.productname}</h3>
+                    <p>${product.description}</p>
+                    <p><strong>Price:</strong> $${product.price}</p>
+                    <p><strong>Quantity:</strong> ${product.quantity}</p>
+                </div>
+            `;
+            productContainer.innerHTML += productCard;
+        });
+    }
+}
+</script>
+
+  
+</body>
+</html>
